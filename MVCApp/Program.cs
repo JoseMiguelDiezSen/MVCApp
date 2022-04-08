@@ -11,6 +11,7 @@ using Microsoft.Extensions.Logging;
 namespace MVCApp
 {
     public class Program
+
     {
         public static void Main(string[] args)
         {
