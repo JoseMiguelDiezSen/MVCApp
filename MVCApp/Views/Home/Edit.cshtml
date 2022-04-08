@@ -1,0 +1,91 @@
+﻿@model MVCApp.ViewModels.EditarAmigoModelo
+@{
+    ViewBag.Title = "Editar Amigo";
+
+
+    var rutaFoto = "/images/" + (Model.rutaFotoExistente ?? "logo.jpg");
+}
+
+
+
+<form asp-controller="home" asp-action="edit" enctype="multipart/form-data" method="post" class="mt-3">
+
+    <div asp-validation-summary="All" class="text-danger">
+    </div>
+
+    @*Guardamos el id y la ruta de la foto existente*@
+    <input hidden asp-for="Id" />
+    <input hidden asp-for="rutaFotoExistente" />
+
+    @*Enlazamos los datos correspondientes para mostrarlos en los controles*@
+    <div class="form-group row">
+        <label asp-for="Nombre" class="col-sm-2 col form-label"></label>
+        <div class="col-sm-10">
+            <input asp-for="Nombre" class="form-control" placeholder="Name">
+            <span asp-validation-for="Nombre" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label asp-for="Email" class="col-sm-2" col-form-label></label>
+        <div class="col-sm-10">
+            <input asp-for="Email" class="form-control" placeholder="Email">
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+    </div>
+
+
+    <div class="form-group row">
+        <label asp-for="Ciudad" class="col-sm-2" col-form-label></label>
+        <div class="col-sm-10">
+            <select asp-for="Ciudad" class="custom-select mr-sm-2"
+                    asp-items="Html.GetEnumSelectList<Provincia>()">
+                <option value="">Please Select</option>
+            </select>
+            <span asp-validation-for="Ciudad" class="text-danger"></span>
+        </div>
+    </div>
+
+
+    <div class="form-group row">
+        <label asp-for="Foto" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+
+            <div class="custom-file">
+
+                <input asp-for="Foto" class="custom-file-input form-control">
+                <label class="custom-file-label">Click para modificar la imagen</label>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    @*Mostramos la foto del amigo*@
+    <div class="form-group row col-sm-4 offset-4">
+        <img class="imageThumbnail" src="@rutaFoto" asp-append-version="true" />
+    </div>
+
+    <div class="form-group row">
+        <div class="col-sm-10">
+            <button type="submit" class="btn btn-primary">Editar</button>
+            <a asp-action="index" asp-controller="home" class="btn btn-primary">Volver</a>
+        </div>
+    </div>
+
+    @section Scripts{
+
+        <script>
+            $(document).ready(function () {
+                $('.custom-file-input').on("change", function () {
+
+                    var filename = $(this).val().split("\\").pop();
+                    $(this).next('.custom-file-label').html(filename);
+                });
+            });
+        </script>
+        }
+
+    </form>
+

@@ -1,0 +1,83 @@
+﻿@model MVCApp.Models.CrearAmigoModelo
+@{ 
+
+    ViewBag.Title = "Nuevo Usuario";
+}
+
+<form asp-controller="home" asp-action="Create" method="post" class="m-2" enctype="multipart/form-data">
+
+    <div class="form-group row">
+        <!--Label de Nombre -->
+        <label asp-for="Nombre" class="col-sm-2 col-form-label"></label>
+
+        <div class="col-sm-10">
+            <input asp-for="Nombre" class="form-control" placeholder="Nombre" />
+            <span asp-validation-for="Nombre" class="text-danger"></span>
+        </div>
+    </div>
+
+
+    <div class="form-group row">
+        <!--Label de EMAIL -->
+        <label asp-for="Email" class="col-sm-2 col-form-label"></label>
+
+        <div class="col-sm-10">
+            <input asp-for="Email" class="form-control" placeholder="Email" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <!--Label de Ciudad -->
+        <label asp-for="Ciudad" class="col-sm-2 col-form-label"></label>
+
+        <div class="col-sm-10">
+            <select asp-for="Ciudad" class="custom-select mr-sm-2" asp-items="Html.GetEnumSelectList<MVCApp.Models.Provincia>()">
+
+                <option value="">Seleccione uno:</option>
+
+            </select>
+
+            <span asp-validation-for="Ciudad" class="text-danger"></span>
+        </div>
+
+    </div>
+
+    <div class="form-group row">
+
+        <label asp-for="Foto" class="col-sm-2 col-form-label"></label>
+
+        <div class="col-sm-10">
+
+            <div class="custom-file">
+                <input asp-for="Foto" class="form-control custom-file-input">
+                <label class="custom-file-label">Selecciona una imagen</label>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!--Boton para añadir al nuevo usuario-->
+    <div class="form-group row">
+        <div class="col-sm-10">
+            <button type="submit" class="btn btn-primary">NUEVO</button>
+        </div>
+    </div>
+
+
+    @section Scripts{
+
+        <script>
+            $(document).ready(function () {
+                $('.custom-file-input').on("change", function () {
+
+                    var filename = $(this).val().split("\\").pop();
+                    $(this).next('.custom-file-label').html(filename);
+                });
+            });
+        </script>
+    }
+
+</form>
+

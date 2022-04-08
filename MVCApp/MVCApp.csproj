@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20201020185420_AlterAmigosSeedData2.cs" />
+    <Compile Remove="Migrations\20201020185420_AlterAmigosSeedData2.Designer.cs" />
+    <Compile Remove="Migrations\20201020185642_AlterAmigosSeedData3.cs" />
+    <Compile Remove="Migrations\20201020185642_AlterAmigosSeedData3.Designer.cs" />
+    <Compile Remove="Migrations\20201020190133_AlterAmigosSeedData4.cs" />
+    <Compile Remove="Migrations\20201020190133_AlterAmigosSeedData4.Designer.cs" />
+    <Compile Remove="Migrations\20201020191644_AlterAmigosSeedData5.cs" />
+    <Compile Remove="Migrations\20201020191644_AlterAmigosSeedData5.Designer.cs" />
+    <Compile Remove="Migrations\20201020191817_AlterAmigosSeedData.cs" />
+    <Compile Remove="Migrations\20201020191817_AlterAmigosSeedData.Designer.cs" />
+    <Compile Remove="Migrations\20201020193904_AlterAmigosSeedData.cs" />
+    <Compile Remove="Migrations\20201020193904_AlterAmigosSeedData.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+  </ItemGroup>
+
+</Project>

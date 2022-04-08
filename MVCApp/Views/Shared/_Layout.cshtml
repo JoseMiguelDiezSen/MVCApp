@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/css/style.css" rel="stylesheet"/>
+    <script src="~/lib/jquery/jquery.js"></script>
+    <link href="~/lib/twitter-bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <!-- Cuando el entorno sea de desarrollo cogemos de aqui los estilos -->
+    <environment include="Development">
+        <link href="~/lib/twitter-bootstrap/css/bootstrap.css" rel="stylesheet" />
+    </environment>
+
+    <!-- Cuando el entorno no sea de desarrollo coge los datos de estos estilos que no tienen como orrigen el entorno de desarrollo -->
+    <!--En caso de fallo que tire de la ruta "asp-fallback-href" -->
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+              integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+              crossorigin="anonymous"
+              href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/twitter-bootstrap/css/bootstrap.css"
+              asp-fallback-test-class="sr-only"
+              asp-fallback-test-property="position"
+              asp-fallback-test-value="absolute"
+              asp-suppres-fallback-integrity="true" />
+    </environment>
+
+    <title>@ViewBag.Title</title>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+
+            <a class="navbar-brand" asp-controller="home" asp-action="index">
+
+                <img src="~/images/blanco.transparente2.png" width="50" height="30" />
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavBar">
+                <span class="navbar-toggle-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="collapsibleNavBar">
+
+                <ul class="navbar-nav">
+
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="home" asp-action="index">Listado</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="home" asp-action="create">Crear</a>
+                    </li>
+
+                    <li class="nav-item">
+
+                    </li>
+                </ul>
+
+            </div>
+
+        </nav>
+
+        <div>
+            @RenderBody()
+            @RenderSection("Scripts", required: false)
+        </div>
+
+
+    </div>
+</body>
+</html>
